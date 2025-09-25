@@ -1,0 +1,15 @@
+# core
+torch==2.* ; platform_system!="Windows" or python_version<"3.13"
+torchvision==0.* ; platform_system!="Windows" or python_version<"3.13"
+# Windows CPU fallback: you can comment the two lines above and install from CPU index manually.
+
+transformers>=4.42
+sentence-transformers>=2.7
+Pillow>=10.3
+tqdm>=4.66
+numpy>=1.26,<2.3
+pandas>=2.2
+opencv-python>=4.9
+ultralytics>=8.2
+
+# LaTeX build (for CI docker; locally you just need TeX distribution)
