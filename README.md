@@ -23,13 +23,7 @@ hammer-sgs/
 
 ## Quick Start
 
-### 1. Clone the repo
-```bash
-git clone https://github.com/Gaganx0/hammer-sgs.git
-cd hammer-sgs
-```
-
-### 2. Create a Python environment
+### 1. Create a Python environment
 ```bash
 python -m venv .venv
 source .venv/bin/activate      # Windows: .venv\Scripts\activate
@@ -37,9 +31,9 @@ pip install -U pip
 pip install -r requirements.txt
 ```
 
-### 3. Prepare the dataset
-We rely on the **DGM4plus** dataset:  
-https://github.com/Gaganx0/DGM4plus  
+### 2. Prepare the dataset
+We rely on the dataset:  
+https://anonymous.4open.science/r/DGM4plus-24F5/ 
 
 Download it and place it locally. Expected layout:
 
@@ -50,7 +44,7 @@ Download it and place it locally. Expected layout:
   metadata.json       
 ```
 
-### 4. Generate FG–BG crops with YOLOv8-seg
+### 3. Generate FG–BG crops with YOLOv8-seg
 ```bash
 python scripts/yolo_seg_union_people.py   --data /path/to/DGM4plus/metadata.json   --img_root /path/to/DGM4plus   --out_dir crops   --model yolov8s-seg.pt   --imgsz 896
 ```
@@ -58,7 +52,7 @@ This produces:
 - `crops/fg/<id>.png` → Foreground crop (all people merged)  
 - `crops/bg/<id>.png` → Background crop (inverse mask)
 
-### 5. Run the SGS semantic checker
+### 4. Run the SGS semantic checker
 ```bash
 python scripts/semantic_fg_bg_blip.py   --fg_dir crops/fg   --bg_dir crops/bg   --out_csv results/semantic_blip_cpu.csv   --threshold 0.55
 ```
